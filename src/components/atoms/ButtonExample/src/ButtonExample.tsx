@@ -32,8 +32,8 @@ export const ButtonExample = ({
   ...props
 }: ButtonProps) => {
   const mode = primary
-    ? "text-white bg-blue-400 hover:bg-blue-500 shadow-sm"
-    : "text-slate-800 bg-slate-50 shadow-sm"
+    ? "text-white bg-blue-500 hover:bg-blue-600 shadow-sm"
+    : "text-white bg-blue-300 hover:bg-blue-400 shadow-sm"
   return (
     <button
       type="button"

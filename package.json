@@ -1,18 +1,28 @@
 {
   "name": "storybook",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "tsc && vite build",
     "lint": "eslint src --ext js,jsx,ts,tsx --max-warnings 0",
     "preview": "vite preview",
-    "build-storybook": "storybook build"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "build-storybook": "storybook build",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc && vite build && cp package.json README.md ./dist"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.0.7",
@@ -39,10 +49,13 @@
     "eslint-plugin-storybook": "^0.6.11",
     "postcss": "^8.4.23",
     "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "storybook": "^7.0.7",
     "tailwindcss": "^3.3.2",
     "typescript": "^5.0.2",
-    "vite": "^4.3.2"
+    "vite": "^4.3.2",
+    "vite-plugin-dts": "^2.3.0"
   },
   "engines": {
     "node": ">=18.7.0"
